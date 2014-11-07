@@ -2,7 +2,11 @@
 /* Ref: Sedgewick/Wayne*/
 
 
-// incomplete
+// incomplete -- too bored to fix this :(
+// java doesnt support array of generics
+// need to follow a work around
+
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +17,8 @@ public class Graph {
 
 	private final int V;
 	private int E;
-	private Bag<Integer>[] adj;
+	//private Bag<Integer>[] adj;
+	private List<Integer> adj;
 
 	/* Inittializes an empty graph */
 	public Graph(int V) {
@@ -21,9 +26,9 @@ public class Graph {
 		this.V=V;
 		this.E=0;
 
-		adj = (Bag<Integer>[]) new Bag[V];
+		adj = new ArrayList<Integer>[V];
 		for (int v=0;v<V;v++) {
-			adj[v] = new Bag<Integer>();
+			adj[v] = new ArrayList<Integer>();
 		}
 	}
 
