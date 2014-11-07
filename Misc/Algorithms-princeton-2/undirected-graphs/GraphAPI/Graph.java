@@ -1,7 +1,14 @@
+
 /* Ref: Sedgewick/Wayne*/
 
 
 // incomplete
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
 public class Graph {
 
 	private final int V;
@@ -22,14 +29,14 @@ public class Graph {
 
 
 	/* Initializes a graph from an input stream */
-	public Graph(In in) {
-		this(in.readInt());
-		int E = in.readInt();
+	public Graph(Scanner in) {
+		this(in.nextInt());
+		int E = in.nextInt();
 		if(E < 0) throw new IllegalArgumentException("Number of edges must be non negative");
 
 		for (int i=0;i<E;i++) {
-			int v = in.readInt();
-			int w = in.readInt();
+			int v = in.nextInt();
+			int w = in.nextInt();
 			addEdge(v,w);
 		}
 	}
@@ -79,8 +86,18 @@ public class Graph {
 	}
 
 	public static void main(String[] args) {
-		In in = new In(args[0]);
-		Graph G = new Graph(in);
+		
+
+		try {
+			File file = new File(args[0]);
+			Scanner scanner = new Scanner(file);
+			Graph G = new Graph(scanner);
+		} catch(IOException e) {
+			System.out.println("File Read Error: "+e.getMessage());
+		}
+
+
+
 
 	}
 
