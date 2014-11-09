@@ -2,10 +2,6 @@
 /* Ref: Sedgewick/Wayne*/
 
 
-// incomplete -- too bored to fix this :(
-// java doesnt support array of generics
-// need to follow a work around
-
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -13,12 +9,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
+
 public class Graph {
 
 	private final int V;
 	private int E;
-	//private Bag<Integer>[] adj;
-	private List<Integer> adj;
+	private Bag<Integer>[] adj;
 
 	/* Inittializes an empty graph */
 	public Graph(int V) {
@@ -26,9 +22,9 @@ public class Graph {
 		this.V=V;
 		this.E=0;
 
-		adj = new ArrayList<Integer>[V];
+		adj = (Bag<Integer>[]) new Bag[V];
 		for (int v=0;v<V;v++) {
-			adj[v] = new ArrayList<Integer>();
+			adj[v] = new Bag<Integer>();
 		}
 	}
 
@@ -97,6 +93,7 @@ public class Graph {
 			File file = new File(args[0]);
 			Scanner scanner = new Scanner(file);
 			Graph G = new Graph(scanner);
+			System.out.println(G);
 		} catch(IOException e) {
 			System.out.println("File Read Error: "+e.getMessage());
 		}
